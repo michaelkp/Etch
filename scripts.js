@@ -10,7 +10,7 @@ const gridContainer = document.createElement('div');
         gridContainer.style.width = '600px';
         gridContainer.style.height = '600px';
         gridContainer.style.justifyContent = 'center';
-        gridContainer.style.gap = '1px 1px';
+        //gridContainer.style.gap = '1px 1px';
         gridContainer.style.backgroundColor = 'red';
         gridContainer.style.gridTemplateColumns = 'repeat(16, 1fr)';
         gridContainer.style.gridTemplateRows = 'repeat(16, 1fr)';
@@ -25,6 +25,8 @@ function pixels(...args) {
               pixel.classList.add('pixel');
               pixel.style.height = 'auto';
               pixel.style.width = 'auto';
+              pixel.style.margin = '0';
+              pixel.style.boxShadow = '0px 0px 1px 0px teal'
               pixel.style.backgroundColor = 'mintcream';
               gridContainer.appendChild(pixel);
               //change background color when hovering over pixel
