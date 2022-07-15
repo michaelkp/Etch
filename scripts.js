@@ -19,6 +19,8 @@ const gridContainer = document.createElement('div');
 
         container.appendChild(gridContainer);
 
+const btnDiv = document.createElement('div');
+
 //make square 'pixels' to put into grid
 function pixels(...args) {
 
@@ -63,11 +65,9 @@ function userInput() {
     }
 }
 
-
 //button recieves input from user to change number of pixels
 function pixelNum() {
     
-    const btnDiv = document.createElement('div');
     const pixelNumBtn = document.createElement('button');
           pixelNumBtn.classList.add('pixelNumBtn');
 
@@ -88,5 +88,17 @@ function pixelNum() {
 }
 pixelNum();
 
+//reset to intial grid values
+function reset() {
+    const resetBtn = document.createElement('button');
+          resetBtn.textContent = 'Reset Pixels';
+          btnDiv.appendChild(resetBtn);
+          container.insertBefore(resetBtn, gridContainer)
 
+    resetBtn.addEventListener('click', () => {
+        gridContainer.style.gridTemplateColumns = 'repeat(16, 1fr)';
+        gridContainer.style.gridTemplateRows = 'repeat(16, 1fr)';
+    })
+}
+reset();
 
