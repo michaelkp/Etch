@@ -1,5 +1,5 @@
 let input = ''; //set global variable
-
+//let pixel;
 //make container
 const container = document.createElement('div');
     container.classList.add('container');
@@ -19,28 +19,22 @@ const gridContainer = document.createElement('div');
 
         container.appendChild(gridContainer);
 
-const btnDiv = document.createElement('div');
+//const btnDiv = document.createElement('div');
 
 //make square 'pixels' to put into grid
 function pixels(...args) {
 
     for (let i = 0; i < args; ++i) {
-        const pixel = document.createElement('div');
-              pixel.classList.add('pixel');
-              pixel.style.height = 'auto';
-              pixel.style.width = 'auto';
-              pixel.style.margin = '0';
-              pixel.style.boxShadow = '0px 0px 1px 0px teal'
-              pixel.style.backgroundColor = 'mintcream';
+        let pixel = document.createElement('div');              
+            pixel.classList.add('pixel');
+              pixel.addEventListener('mouseenter', (e) => {
+                pixel.style.backgroundColor = 'var(--mouseover-color)';
+              });
               gridContainer.appendChild(pixel);
-              //change background color when hovering over pixel
-              pixel.addEventListener('mouseenter', () => {
-                pixel.style.backgroundColor = 'blue';
-              })
+              
     }
 }
 pixels(256);
-
 
 //get user input to change number of pixels on grid
 function userInput() {
@@ -71,19 +65,17 @@ function pixelNum() {
     const pixelNumBtn = document.createElement('button');
           pixelNumBtn.classList.add('pixelNumBtn');
 
-         
           pixelNumBtn.addEventListener('click', () => {
             userInput();// get user input
             console.log(input + ' input test')
             //change grid rows and cols
             gridContainer.style.gridTemplateColumns = 'repeat('+input+', 1fr)';
-            console.log(input + 'cols input test')
             gridContainer.style.gridTemplateRows = 'repeat('+input+', 1fr)';
             pixels(input * input);//change amount of pixels
           });
 
           pixelNumBtn.textContent = 'pixel number';
-          btnDiv.appendChild(pixelNumBtn);
+          //btnDiv.appendChild(pixelNumBtn);
           container.insertBefore(pixelNumBtn, gridContainer)
 }
 pixelNum();
@@ -92,13 +84,24 @@ pixelNum();
 function reset() {
     const resetBtn = document.createElement('button');
           resetBtn.textContent = 'Reset Pixels';
-          btnDiv.appendChild(resetBtn);
-          container.insertBefore(resetBtn, gridContainer)
+    const resetPixel = document.getElementsByClassName('pixel');
+    console.log(resetPixel + 'resetpixel test')
 
-    resetBtn.addEventListener('click', () => {
+          container.insertBefore(resetBtn, gridContainer)
+    resetBtn.addEventListener('click', (e) => {
         gridContainer.style.gridTemplateColumns = 'repeat(16, 1fr)';
         gridContainer.style.gridTemplateRows = 'repeat(16, 1fr)';
-    })
+        for (let i = 0; i < resetPixel.length; i++) {
+            resetPixel[i].style.backgroundColor = 'mintcream';
+        }
+    });
 }
 reset();
 
+//pick colors
+function colorPicker() {
+    const colorBtn = document.createElement('button');
+          colorBtn.textContent = 'Colors';
+          container.appendChild(colorBtn);
+}
+colorPicker()
