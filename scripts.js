@@ -30,6 +30,11 @@ function resetPixels() {
     }
 }
 
+function resetGrid() {
+    grid.style.gridTemplateColumns = 'repeat(16, 1fr)';
+    grid.style.gridTemplateRows = 'repeat(16, 1fr)';  
+}
+
 function resetBtn() {
     const resetBtn = document.createElement('button');
     resetBtn.textContent = 'Reset Colors';
@@ -41,10 +46,6 @@ function resetBtn() {
 }
 resetBtn();
 
-function resetGrid() {
-    grid.style.gridTemplateColumns = 'repeat(16, 1fr)';
-            grid.style.gridTemplateRows = 'repeat(16, 1fr)';  
-}
 
 function userInput() {
     input = prompt('Change grid size by entering a number between 16 and 100.');
