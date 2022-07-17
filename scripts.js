@@ -117,22 +117,28 @@ function buttons() {
         btns.classList.add('btns');
         container.insertBefore(btns, grid);
     const deleteBtn = document.createElement('button');
+    const resetColorBtn = document.createElement('button');
     const resetGridBtn = document.createElement('button');
     const randomColorBtn = document.createElement('button'); 
     const newGridBtn = document.createElement('button');
 
     randomColorBtn.textContent = 'Random Colors';
+    resetColorBtn.textContent = 'Reset Color';
     deleteBtn.textContent = 'Delete Colors';
     resetGridBtn.textContent = 'Reset Grid';
     newGridBtn.textContent = 'New Grid';
 
     deleteBtn.addEventListener('click', deleteColors);
+    resetColorBtn.addEventListener('click', resetColor);
+
     resetGridBtn.addEventListener('click', resetGrid);
     randomColorBtn.addEventListener('click', randomColor);
     newGridBtn.addEventListener('click', newGrid);
 
 
     btns.appendChild(randomColorBtn);
+    btns.appendChild(resetColorBtn);
+
     btns.appendChild(resetGridBtn);
     btns.appendChild(deleteBtn);
     btns.appendChild(newGridBtn);
