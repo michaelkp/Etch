@@ -21,3 +21,19 @@ function drawPixels(...args) {
     }
 }
 drawPixels(256);
+
+function resetPixels() {
+    let reset = document.getElementsByClassName('drawColor');
+    
+    while(reset.length) {
+        reset[0].classList.remove('drawColor');
+    }
+}
+
+function resetBtn() {
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset Colors';
+    resetBtn.addEventListener('click', resetPixels);
+    container.insertBefore(resetBtn, grid);
+}
+resetBtn();
