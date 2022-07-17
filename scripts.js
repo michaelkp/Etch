@@ -37,14 +37,11 @@ function randomColor() {
 
 
 function randomColorBtn() {
-    const randomColorBtn = document.createElement('button');
-        randomColorBtn.textContent = 'Random Colors';
-        container.insertBefore(randomColorBtn, grid);
-        randomColorBtn.addEventListener('click', randomColor);
+    
 }
 randomColorBtn();
 
-function resetPixels() {
+function deleteColors() {
     const resetDraw = document.getElementsByClassName('drawColor');
     
     while(resetDraw.length) {
@@ -64,23 +61,10 @@ function resetPixels() {
 
 function resetGrid() {
     grid.style.gridTemplateColumns = 'repeat(16, 1fr)';
-    grid.style.gridTemplateRows = 'repeat(16, 1fr)';  
+    grid.style.gridTemplateRows = 'repeat(16, 1fr)'; 
+    deleteColors(); 
 }
 
-function resetBtn() {
-    const resetColorsBtn = document.createElement('button');
-    const resetGridBtn = document.createElement('button');
-    
-    resetColorsBtn.textContent = 'Reset Colors';
-    resetGridBtn.textContent = 'Reset Grid';
-
-    resetColorsBtn.addEventListener('click', resetPixels);
-    resetGridBtn.addEventListener('click', resetGrid);
-
-    container.insertBefore(resetColorsBtn, grid);
-    container.insertBefore(resetGridBtn, grid);
-}
-resetBtn();
 
 
 function userInput() {
@@ -106,20 +90,43 @@ function userInput() {
 }
 
 function newGrid() {
-    let newGridBtn = document.createElement('button');
-        newGridBtn.textContent = 'New Grid';
+    
     let newGridCols = grid;
     let newGridRows = grid;
-        container.insertBefore(newGridBtn, grid);
+    userInput();
 
-        newGridBtn.addEventListener('click', () => {
-            userInput();
-
-            newGridCols.style.gridTemplateColumns = 'repeat('+input+', 1fr)';
-            newGridRows.style.gridTemplateRows = 'repeat('+input+', 1fr)';   
-            
-            drawPixels(input * input);
-          });
+    newGridCols.style.gridTemplateColumns = 'repeat('+input+', 1fr)';
+    newGridRows.style.gridTemplateRows = 'repeat('+input+', 1fr)';   
+    
+    drawPixels(input * input);
+    deleteColors();    
 }
-newGrid()
 
+
+function buttons() {
+    const btns = document.createElement('div');
+        btns.classList.add('btns');
+        container.insertBefore(btns, grid);
+    const deleteBtn = document.createElement('button');
+    const resetGridBtn = document.createElement('button');
+    const randomColorBtn = document.createElement('button'); 
+    const newGridBtn = document.createElement('button');
+
+    randomColorBtn.textContent = 'Random Colors';
+    deleteBtn.textContent = 'Delete Colors';
+    resetGridBtn.textContent = 'Reset Grid';
+    newGridBtn.textContent = 'New Grid';
+
+    deleteBtn.addEventListener('click', deleteColors);
+    resetGridBtn.addEventListener('click', resetGrid);
+    randomColorBtn.addEventListener('click', randomColor);
+    newGridBtn.addEventListener('click', newGrid);
+
+
+    btns.appendChild(randomColorBtn);
+    btns.appendChild(resetGridBtn);
+    btns.appendChild(deleteBtn);
+    btns.appendChild(newGridBtn);
+
+}
+buttons();
