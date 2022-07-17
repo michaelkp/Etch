@@ -14,7 +14,6 @@ function drawPixels(...args) {
         drawPix.addEventListener('mouseover', () => {
             drawPix.classList.add('drawColor')
             drawPix.style.backgroundColor = defaultColor;
-            console.log('pix test')
         })
         grid.appendChild(drawPix)
     }
@@ -35,10 +34,7 @@ function randomColor() {
 }
 
 
-function randomColorBtn() {
-    
-}
-randomColorBtn();
+
 
 function deleteColors() {
     const resetDraw = document.getElementsByClassName('drawColor');
@@ -59,19 +55,24 @@ function deleteColors() {
 
 
 function resetColor() {
-    const resetRandomColor = document.getElementsByClassName('randomPixelColor');
+    const resetRandomColor = document.getElementsByClassName('pixel');
+    const resetPixelColor = defaultColor;
 
-    while(resetRandomColor.length) {
-        resetRandomColor[0].style.backgroundColor = defaultColor;
-        resetRandomColor[0].classList.remove('randomPixelColor');
+    for(let i = 0; i < resetRandomColor.length; i++) {
+        resetRandomColor[i].addEventListener('mouseover', () => {
+            resetRandomColor[i].classList.remove('randomPixelColor');
+            resetRandomColor[i].classList.add('drawColor')
+            resetRandomColor[i].style.backgroundColor = resetPixelColor
+        }) 
     }
 }
 
 function resetGrid() {
     grid.style.gridTemplateColumns = 'repeat(16, 1fr)';
-    grid.style.gridTemplateRows = 'repeat(16, 1fr)'; 
-    resetColor();
+    grid.style.gridTemplateRows = 'repeat(16, 1fr)';
     deleteColors(); 
+ 
+    resetColor();
     
 }
 
@@ -130,7 +131,6 @@ function buttons() {
 
     deleteBtn.addEventListener('click', deleteColors);
     resetColorBtn.addEventListener('click', resetColor);
-
     resetGridBtn.addEventListener('click', resetGrid);
     randomColorBtn.addEventListener('click', randomColor);
     newGridBtn.addEventListener('click', newGrid);
@@ -138,7 +138,6 @@ function buttons() {
 
     btns.appendChild(randomColorBtn);
     btns.appendChild(resetColorBtn);
-
     btns.appendChild(resetGridBtn);
     btns.appendChild(deleteBtn);
     btns.appendChild(newGridBtn);
