@@ -1,12 +1,10 @@
 const container = document.querySelector('#container');
 const grid = document.querySelector('#grid');
-
+const defaultColor = '#0000ff';
 
 let pixel = document.createElement('div');
     pixel.classList.add('pixel');
-    //pixel.addEventListener('mouseover', () => {
-        //pixel.classList.add('drawColor');
-    //})
+    
     grid.appendChild(pixel);
 
 function drawPixels(...args) {
@@ -14,7 +12,8 @@ function drawPixels(...args) {
         let drawPix = document.createElement('div');
         drawPix.classList.add('pixel');
         drawPix.addEventListener('mouseover', () => {
-            drawPix.classList.add('drawColor');
+            drawPix.classList.add('drawColor')
+            drawPix.style.backgroundColor = defaultColor;
             console.log('pix test')
         })
         grid.appendChild(drawPix)
@@ -45,27 +44,36 @@ function deleteColors() {
     const resetDraw = document.getElementsByClassName('drawColor');
     
     while(resetDraw.length) {
+        resetDraw[0].style.backgroundColor = 'mintcream';
         resetDraw[0].classList.remove('drawColor');
-        console.log(resetDraw[0] + 'resetdraw teest')
     }
     const resetRandomColor = document.getElementsByClassName('randomPixelColor');
 
     while(resetRandomColor.length) {
         resetRandomColor[0].style.backgroundColor = 'mintcream';
         resetRandomColor[0].classList.remove('randomPixelColor');
-        
-        console.log(resetRandomColor[0] + ' remove test')
     }
 }
 
 
+
+
+function resetColor() {
+    const resetRandomColor = document.getElementsByClassName('randomPixelColor');
+
+    while(resetRandomColor.length) {
+        resetRandomColor[0].style.backgroundColor = defaultColor;
+        resetRandomColor[0].classList.remove('randomPixelColor');
+    }
+}
+
 function resetGrid() {
     grid.style.gridTemplateColumns = 'repeat(16, 1fr)';
     grid.style.gridTemplateRows = 'repeat(16, 1fr)'; 
+    resetColor();
     deleteColors(); 
+    
 }
-
-
 
 function userInput() {
     input = prompt('Change grid size by entering a number between 16 and 100.');
@@ -99,6 +107,7 @@ function newGrid() {
     newGridRows.style.gridTemplateRows = 'repeat('+input+', 1fr)';   
     
     drawPixels(input * input);
+    resetColor();
     deleteColors();    
 }
 
