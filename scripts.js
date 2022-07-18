@@ -21,14 +21,15 @@ function drawPixels(...args) {
 drawPixels(256);
 
 function randomColor() {
-    let randomColorBG = '#'+Math.floor(Math.random()*16777215).toString(16);
+    
+    //let randomColorBG = 
     let randomPixelColor = document.getElementsByClassName('pixel');
         
     for(let i = 0; i < randomPixelColor.length; i++) {
         randomPixelColor[i].addEventListener('mouseover', () => {
             randomPixelColor[i].classList.remove('drawColor');
             randomPixelColor[i].classList.add('randomPixelColor');
-            randomPixelColor[i].style.backgroundColor = randomColorBG;
+            randomPixelColor[i].style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);;
         })
     }
 }
