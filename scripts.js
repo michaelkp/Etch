@@ -1,11 +1,20 @@
 const container = document.querySelector('#container');
-const grid = document.querySelector('#grid');
+const gridContainer = document.querySelector('#gridContainer');
+const grid = document.createElement('div');
+      grid.classList.add('grid')
+
+const gridHead = document.createElement('header');
+      gridHead.classList.add('gridHead');
+
 const defaultColor = '#0000ff';
 
 let pixel = document.createElement('div');
     pixel.classList.add('pixel');
     
+    gridContainer.appendChild(grid);
     grid.appendChild(pixel);
+    gridContainer.insertBefore(gridHead, grid);
+
 
 function drawPixels(...args) {
     for(let i = 0; i < args; i++) {
@@ -115,14 +124,19 @@ function newGrid() {
 
 
 function buttons() {
-    const btns = document.createElement('div');
+    const btns = document.createElement('span');
         btns.classList.add('btns');
-        container.insertBefore(btns, grid);
+        gridHead.appendChild(btns);
     const deleteBtn = document.createElement('button');
+          deleteBtn.classList.add('gridBtn');
     const resetColorBtn = document.createElement('button');
+          resetColorBtn.classList.add('gridBtn');
     const resetGridBtn = document.createElement('button');
+          resetGridBtn.classList.add('gridBtn');
     const randomColorBtn = document.createElement('button'); 
+          randomColorBtn.classList.add('gridBtn');
     const newGridBtn = document.createElement('button');
+          newGridBtn.classList.add('gridBtn');
 
     randomColorBtn.textContent = 'Random Colors';
     resetColorBtn.textContent = 'Reset Color';
@@ -139,9 +153,10 @@ function buttons() {
 
     btns.appendChild(randomColorBtn);
     btns.appendChild(resetColorBtn);
+    btns.appendChild(newGridBtn);
     btns.appendChild(resetGridBtn);
     btns.appendChild(deleteBtn);
-    btns.appendChild(newGridBtn);
+    
 
 }
 buttons();
