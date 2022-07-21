@@ -2,43 +2,96 @@ body {
     margin: 0;
     display: grid;
     justify-content: center;
+    background-color: mintcream;
+
 }
 
 container {
     width: 960px;
     height: 100vh;
-    margin: auto;
-    background-color: aqua;
+    margin: 0px;
     display: grid;
     justify-content: center;
 }
-.btn {
-    display: grid;
-    justify-content: space-between;
+
+header {
+    background-color: azure;
+    width: 100%;
+}
+
+
+gridContainer {
+    /*border: 2px solid black;*/
+    width: 600px;
+    height: auto;
+    margin: 0;
+    
+}
+.gridHead {
+    margin: 0;
+    padding-bottom: 0px;
+    height: 25px;
+    /*border: 2px solid black;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.btns {
+    
+    height: 25px;
+    width: auto;
+    margin: auto;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+
+    
+}
+.gridBtn {
+    background-color: hsl(303, 98%, 51%); /* Green */
+    border: none;
+    color: white;
+    width: 120px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.gridBtn:hover {
+    background-color: rgb(0, 96, 185);
 }
 .pixel {
     background-color: mintcream;
-    box-shadow: 0px 0px 1px 0px teal;
+    box-shadow: 1px 1px 5px 0px teal;
     height: auto;
     width: auto;
-    margin: 0;
-}
+    margin: 0px;
+    border-radius: 2px;
 
+}
+.hue{
+    filter: saturate(10%);
+}
 
 .randomColor {
     background-color: chocolate;
 }
 
-gridContainer {
+.grid {
+    border: 2px solid hsl(303, 98%, 51%);
     display: grid;
     width: 600px;
-    height: 600px;
-    margin: auto;
-    background-color: red;
+    height: 650px;
+    padding-top: 0px;
+    margin: 0;
+    background-color: hsl(303, 98%, 51%);
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
+    border-radius: 5px;
 }
 
-button {
-    display: inline-block;
-}
+
