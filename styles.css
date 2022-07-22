@@ -114,3 +114,7 @@ gridContainer {
 .colorChange {
     transition: background-color .3s ease;
 }
+
+footer {
+    text-align: center;
+}

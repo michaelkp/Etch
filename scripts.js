@@ -9,15 +9,13 @@ const gridHead = document.createElement('header');
 const defaultColor = '#0000ff';
 
 let pixel = document.createElement('div');
-    pixel.classList.add('pixel');
     
     gridContainer.appendChild(grid);
-    grid.appendChild(pixel);
     gridContainer.insertBefore(gridHead, grid);
 
 
 function drawPixels(...args) {
-    for(let i = 0; i < args; i++) {
+    for(let i = 0; i < args; ++i) {
         let drawPix = document.createElement('div');
         drawPix.classList.add('pixel');
         
