@@ -83,7 +83,7 @@ gridContainer {
 }
 .pixel {
     background-color: mintcream;
-    box-shadow: 1px 1px 5px 0px teal;
+    box-shadow: 1px 1px 2px 0px teal;
     height: auto;
     width: auto;
     margin: 0px;
@@ -111,4 +111,6 @@ gridContainer {
     border-radius: 5px;
 }
 
-
+.colorChange {
+    transition: background-color .3s ease;
+}

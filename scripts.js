@@ -20,14 +20,27 @@ function drawPixels(...args) {
     for(let i = 0; i < args; i++) {
         let drawPix = document.createElement('div');
         drawPix.classList.add('pixel');
+        
         drawPix.addEventListener('mouseover', () => {
             drawPix.classList.add('drawColor')
             drawPix.style.backgroundColor = defaultColor;
+        })
+        drawPix.addEventListener('mouseover', () => {
+            colorChange();  
         })
         grid.appendChild(drawPix)
     }
 }
 drawPixels(256);
+
+function colorChange() {
+    const change = document.getElementsByClassName('pixel');
+    for(let i = 0; i < change.length; i++) {
+        change[i].addEventListener('mouseover', () => {
+            change[i].classList.add('colorChange');
+        })
+    }
+}
 
 function randomColor() {
     
@@ -58,6 +71,7 @@ function deleteColors() {
     while(resetRandomColor.length) {
         resetRandomColor[0].style.backgroundColor = 'mintcream';
         resetRandomColor[0].classList.remove('randomPixelColor');
+        
     }
 }
 
