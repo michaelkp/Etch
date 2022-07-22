@@ -15,8 +15,25 @@ container {
 }
 
 header {
-    background-color: azure;
+    background-color: mintcream;
+    margin-top: 0px;
+    padding-top: 0px;
     width: 100%;
+}
+
+header h1 {
+    font-size: 100px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: hsl(303, 98%, 51%);
+    background-image: linear-gradient(10deg, hsl(303, 98%, 51%), rgb(0, 96, 185));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    text-shadow:  2px 1px 20px 5px teal;
 }
 
 
